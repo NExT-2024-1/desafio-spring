@@ -1,4 +1,5 @@
 # Tech Challenge - Teste de recrutamento do NExT 2024.1
+
 <!-- PROJECT SHIELDS -->
 
 [![npm](https://img.shields.io/badge/type-Open%20Project-green?&style=plastic)](https://img.shields.io/badge/type-Open%20Project-green)
@@ -16,15 +17,15 @@
   <img alt="logo" src=".github/assets/images/logo.png"/>
 </p>
 
-
 ## Overview
-Bem-vindo ao teste de teste de recrutamento do NExT 2024.1. Aqui no NExT nós realmente valorizamos código de qualidade, e este teste foi projetado para permitir que você nos mostre como você acha que código de qualidade deve ser escrito.
+
+Bem-vindo ao teste de recrutamento do NExT 2024.1. Aqui no NExT nós realmente valorizamos código de qualidade, e este teste foi projetado para permitir que você nos mostre como você acha que código de qualidade deve ser escrito.
 
 Para permitir que você se concentre no design e na implementação do código, adicionamos todos os casos de uso que esperamos que você implemente no final das instruções. Em troca, pedimos que você certifique-se de que sua implementação siga todas as melhores práticas que você conhece e que, no final, o código que você enviar seja um código do qual você se orgulhe.
 
 Precisamos de pessoas com energia, integridade e inteligência, que aprendam rápido e que gostem de conhecer e aplicar novas tecnologias.
 
-O tempo sugerido para conclusão do desafio é de 4 dias, mas não é uma regra! Não temos prazo para entrega, queremos que você se dedique e demonstre a qualidade de seu código. Estamos mais interessados em observar a qualidade da solução do que o tempo que você vai demorar.
+O tempo sugerido para conclusão do desafio é de 3 horas, mas não é uma regra! Não temos prazo para entrega, queremos que você se dedique e demonstre a qualidade de seu código. Estamos mais interessados em observar a qualidade da solução do que o tempo que você vai demorar.
 
 Estamos interessados ​​em ver como você aborda o desafio, portanto, crie commits e envie-os com mais regularidade do que normalmente faria para que possamos ver cada etapa do desafio.
 
@@ -32,25 +33,44 @@ Estamos interessados ​​em ver como você aborda o desafio, portanto, crie co
 
 - [Desafio](#desafio)
 - [Contexto](#contexto)
+- [Instruções para o desafio](#instruções-para-o-desafio)
+  - [Para o dia da entrevista técnica](#para-o-dia-da-entrevista-técnica)
 - [Fluxo de Versionamento](#fluxo-de-versionamento)
-
+- [Escopo do desafio](#escopo-do-desafio)
+- [Requisitos](#requisitos)
+  - [Funcionalidades da API](#funcionalidades-da-api)
+  - [Persistência dos Dados](#persistência-dos-dados)
+  - [Outras Funcionalidades](#outras-funcionalidades)
+    - [GET: /todolists](#get-todolists)
+    - [POST: /todolists](#post-todolists)
+    - [PUT: /todolists/:id](#put-todolistsid)
+    - [DELETE: /todolists/:id](#delete-todolistsid)
+    - [GET: /tasks](#get-tasks)
+    - [POST: /tasks](#post-tasks)
+    - [PUT: /tasks/:id](#put-tasksid)
+    - [DELETE: /tasks/:id](#delete-tasksid)
+    - [GET: /tasks/overdue](#get-tasksoverdue)
+    - [GET: /tasks/completed](#get-taskscompleted)
+    - [GET: /tasks/today](#get-taskstoday)
+    - [GET: /tasks/:id/subtasks](#get-tasksidsubtasks)
+    - [POST: /tasks/:id/subtasks](#post-tasksidsubtasks)
+    - [PUT: /tasks/:id/subtasks/:subtaskId](#put-tasksidsubtaskssubtaskid)
+    - [DELETE: /tasks/:id/subtasks/:subtaskId](#delete-tasksidsubtaskssubtaskid)
+- [Estrutura das Entidades](#estrutura-das-entidades)
+  - [Lista de Tarefas](#lista-de-tarefas)
+  - [Atividade](#atividade)
 
 ## Desafio
 
-Nesse desafio, você irá desenvolver uma API REST, que atende a empresa NExT Seguros. Agora você irá praticar o que você aprendeu até agora no modulo de java do NExT sobre Java e Spring Boot, para criar uma pequena API para pedidos de seguros.
+Nesse desafio, você irá desenvolver uma API REST para um sistema de gerenciamento de tarefas (To-Do List). Você irá praticar o que aprendeu até agora sobre Java e Spring Boot para criar uma pequena API para gerenciar listas de tarefas e atividades.
 
-Essa será uma API que receberá requisições de um aplicativo movel, e retornará e filtrará as linhas de seguro da NExT Seguros e permitirá a analise de perfil do cliente.
-
+Essa será uma API que receberá requisições de um aplicativo móvel, e permitirá que os usuários criem, leiam, atualizem e excluam listas de tarefas e suas atividades correspondentes.
 
 ## Contexto
 
-O NExT oferece aos seus usuários um pacote de seguros personalizado de acordo com suas necessidades específicas, sem exigir que o usuário entenda nada sobre seguros. Isso permite que o NExT atue como seu consultor de seguros de fato.
+O sistema de gerenciamento de tarefas (To-Do List) permite que os usuários criem e organizem suas listas de tarefas, bem como as atividades que compõem cada lista. Cada lista de tarefas pode conter várias atividades, e essas atividades podem ser atualizadas conforme necessário.
 
-O NExT determina as necessidades de seguro do usuário fazendo perguntas pessoais e relacionadas a riscos e coletando informações sobre o veículo e a casa do usuário. Usando esses dados, O NExT determina seu perfil de risco para cada linha de seguro e então sugere um plano de seguro ( "econômico", "regular", "responsável") correspondente ao seu perfil de risco.
-
-Você foi encarregado de criar um serviço que calcule a analise dos seguros e para este desafio, você criará uma versão simplificada desse aplicativo codificando um endpoint de API simples que recebe uma carga JSON com as informações do usuário e retorna seu perfil de risco (JSON novamente).
-
-
+Você foi encarregado de criar um serviço que permita o gerenciamento dessas listas e atividades. Para este desafio, você criará uma versão simplificada desse aplicativo codificando um endpoint de API simples que recebe e retorna dados em formato JSON.
 
 ## Instruções para o desafio
 
@@ -62,36 +82,38 @@ Você foi encarregado de criar um serviço que calcule a analise dos seguros e p
 
 ## Para o dia da entrevista técnica
 
-Na data marcada pelo professor tenha sua aplicação rodando na sua máquina local para execução dos testes e para nos mostrar os pontos desenvolvidos e possíveis questionamentos. Faremos um code review junto contigo como se você já fosse do nosso time ❤️, você poderá explicar o que você pensou, como arquitetou e como pode evoluir o projeto.
-
+Na data marcada pelo professor, tenha sua aplicação rodando na sua máquina local para execução dos testes e para nos mostrar os pontos desenvolvidos e possíveis questionamentos. Faremos um code review junto contigo como se você já fosse do nosso time ❤️. Você poderá explicar o que pensou, como arquitetou e como pode evoluir o projeto.
 
 ## Fluxo de Versionamento
-Aconselho seguir o [versionamento semântico](https://semver.org/) e o [gitflow](https://www.atlassian.com/br/git/tutorials/comparing-workflows/gitflow-workflow) para versionar este desafio.
+
+Aconselhamos seguir o [versionamento semântico](https://semver.org/) e o [gitflow](https://www.atlassian.com/br/git/tutorials/comparing-workflows/gitflow-workflow) para versionar este desafio.
 
 ## Escopo do desafio
 
 - Documentar todas suposições realizadas;
 - O desenvolvimento do back-end deve ser em Spring Boot;
 - Não é necessário submeter uma aplicação que cumpra cada um dos requisitos descritos abaixo, mas o que for submetido deve funcionar;
-- Informar em um arquivo README.md o passo a passo necessário para rodar o projeto juntamente com o descritivo das funcionalidades que foram atentidas no desafio.
+- Informar em um arquivo README.md o passo a passo necessário para rodar o projeto juntamente com o descritivo das funcionalidades que foram atendidas no desafio.
 
 ## Requisitos
 
+-------------------------------------------------------------
+<!-- Requisitos do Todo List -->
 
-### Requisitos do cliente
+### Requisitos do To-Do List
 
 <details>
-<summary style="font-size:16px"><b>GET: /clients</b></summary>
+<summary style="font-size:16px"><b>GET: /todolists</b></summary>
 
 ### Função
 
-Deve haver uma rota para listar todos os clientes cadastrados;
+Deve haver uma rota para listar todas as listas de tarefas cadastradas;
 
 ### Requisição
 
 **URL de Requisição**
 
-> $ curl https://localhost:8080/clients
+> $ curl https://localhost:8080/todolists
 
 #### Exemplo de requisição
 ```JSON
@@ -100,7 +122,7 @@ Deve haver uma rota para listar todos os clientes cadastrados;
 }
 ```
 
-Retorna um Array dos clientes.
+Retorna um array das listas de tarefas.
 
 #### Exemplo de resposta
 
@@ -109,26 +131,7 @@ Retorna um Array dos clientes.
   {
     "id": long,
     "name": String,
-    "age": int,
-    "dependents": int,
-    "houses": List [
-      {
-        "id": int,
-        "ownership_status": String,
-        "location": String,
-        "zipcode": String
-      }
-    ],
-    "income": float,
-    "marital_status": String,
-    "vehicles": List [
-      {
-        "id": 1,
-        "brand": String,
-        "model": String,
-        "year": int
-      }
-    ],
+    "description": String,
     "createdAt": Date,
     "updatedAt": Date
   },
@@ -139,11 +142,11 @@ Retorna um Array dos clientes.
 </details>
 
 <details>
-<summary style="font-size:16px"><b>POST: /clients</b></summary>
+<summary style="font-size:16px"><b>POST: /todolists</b></summary>
 
 ### Função
 
-Deve haver uma rota para cadastrar um cliente no sistema;
+Deve haver uma rota para cadastrar uma lista de tarefas no sistema;
 
 #### Requisição
 
@@ -151,31 +154,152 @@ Deve haver uma rota para cadastrar um cliente no sistema;
 | Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
 |-----------|-----------|-------------------|--------------|------------|
 | `name` | Nome | `body` | `String` | Sim |
-| `age` | Idade | `body` | `int` | Sim |
-| `dependents` | Numero de dependentes | `body` | `int` | Sim |
-| `income` | Renda | `body` | `float` | Sim |
-| `marital_status` | estado civil | `body` | `String` | Sim |
-
+| `description` | Descrição | `body` | `String` | Sim |
 
 **URL de Requisição**
 
-> $ curl -i -H "Content-Type:application/json" -d '{"name": "String", "age": "int", "dependents": "int", "income": "float", "marital_status": "String"}' https://localhost:8080/clients
+> $ curl -i -H "Content-Type:application/json" -d '{"name": "String", "description": "String"}' https://localhost:8080/todolists
 
 #### Exemplo de requisição
 
-Envia um objeto do tipo cliente com o formato abaixo.
+Envia um objeto do tipo lista de tarefas com o formato abaixo.
 
 ```JSON
 {
   "name": String,
-  "age": int,
-  "dependents": int,
-  "income": float,
-  "marital_status": String
+  "description": String
 }
 ```
 
-Retorna um Array do cliente cadastrado.
+Retorna a lista de tarefas cadastrada.
+
+#### Exemplo de resposta
+
+```JSON
+{
+  "id": long,
+  "name": String,
+  "description": String,
+  "createdAt": Date,
+  "updatedAt": Date
+}
+```
+</details>
+
+<details>
+<summary style="font-size:16px;"><b>GET: /todolists/:id</b></summary>
+
+### Função
+
+Buscar lista de tarefas por ID.
+
+#### Requisição
+
+**Parâmetros**
+| Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
+|-----------|-----------|-------------------|--------------|------------|
+| `id` | ID da lista de tarefas | `path` | `long` | Sim |
+
+**URL de Requisição**
+
+> $ curl https://localhost:8080/todolists/{id}
+
+#### Exemplo de requisição
+
+```JSON
+{
+
+}
+```
+
+Retorna a lista de tarefas cadastrada.
+
+#### Exemplo de resposta
+
+```JSON
+{
+  "id": long,
+  "name": String,
+  "description": String,
+  "createdAt": Date,
+  "updatedAt": Date
+}
+```
+</details>
+
+<details>
+<summary style="font-size:16px;"><b>PUT: /todolists/:id</b></summary>
+
+### Função
+
+Atualizar lista de tarefas por ID.
+
+#### Requisição
+
+**Parâmetros**
+| Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
+|-----------|-----------|-------------------|--------------|------------|
+
+
+| `id` | ID da lista de tarefas | `path` | `long` | Sim |
+| `name` | Nome | `body` | `String` | Sim |
+| `description` | Descrição | `body` | `String` | Sim |
+
+**URL de Requisição**
+
+> $ curl -i -H "Content-Type:application/json" -d '{"name": "String", "description": "String"}' -X PUT https://localhost:8080/todolists/{id}
+
+#### Exemplo de requisição
+
+```JSON
+{
+  "name": String,
+  "description": String
+}
+```
+
+Retorna a lista de tarefas atualizada.
+
+#### Exemplo de resposta
+
+```JSON
+{
+  "id": long,
+  "name": String,
+  "description": String,
+  "createdAt": Date,
+  "updatedAt": Date
+}
+```
+</details>
+
+<details>
+<summary style="font-size:16px;"><b>DELETE: /todolists/:id</b></summary>
+
+### Função
+
+Excluir lista de tarefas por ID.
+
+#### Requisição
+
+**Parâmetros**
+| Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
+|-----------|-----------|-------------------|--------------|------------|
+| `id` | ID da lista de tarefas | `path` | `long` | Sim |
+
+**URL de Requisição**
+
+> $ curl -X DELETE https://localhost:8080/todolists/{id}
+
+#### Exemplo de requisição
+
+```JSON
+{
+
+}
+```
+
+Retorna um array de listas de tarefas cadastradas após a exclusão de uma lista de tarefas por id.
 
 #### Exemplo de resposta
 
@@ -184,258 +308,57 @@ Retorna um Array do cliente cadastrado.
   {
     "id": long,
     "name": String,
-    "age": int,
-    "dependents": int,
-    "houses": List,
-    "income": float,
-    "marital_status": String,
-    "vehicles": List
-  }
+    "description": String,
+    "createdAt": Date,
+    "updatedAt": Date
+  },
+  {...},
+  {...}
 ]
 ```
 </details>
 
-<details>
-<summary style="font-size:16px;"><b>GET: /clients/:id</b></summary>
-
-### Função
-
-Buscar cliente por ID.
-
-#### Requisição
-
-**Parâmetros**
-| Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
-|-----------|-----------|-------------------|--------------|------------|
-| `id` | ID do cliente | `path` | `long` | Sim |
-
-
-**URL de Requisição**
-
-> $ curl https://localhost:8080/clients/{id}
-
-#### Exemplo de requisição
-
-```JSON
-{
-
-}
-```
-
-Retorna um Array do cliente cadastrado.
-
-#### Exemplo de resposta
-
-```JSON
-{
-  "id": long,
-  "name": String,
-  "age": int,
-  "dependents": int,
-  "houses": List [
-    {
-      "id": int,
-      "ownership_status": String,
-      "location": String,
-      "zipcode": String
-    }
-  ],
-  "income": float,
-  "marital_status": String,
-  "vehicles": List [
-    {
-      "id": 1,
-      "brand": String,
-      "model": String,
-      "year": int
-    }
-  ],
-  "createdAt": Date,
-  "updatedAt": Date
-}
-```
-</details>
-
-<details>
-<summary style="font-size:16px;"><b>PUT: /clients/:id</b></summary>
-
-### Função
-
-Atualizar cliente por ID.
-
-#### Requisição
-
-**Parâmetros**
-| Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
-|-----------|-----------|-------------------|--------------|------------|
-| `id` | ID do cliente | `path` | `long` | Sim |
-| `name` | Nome | `body` | `String` | Não |
-| `age` | Idade | `body` | `int` | Não |
-| `dependents` | Numero de dependentes | `body` | `int` | Não |
-| `income` | Renda | `body` | `float` | Não |
-| `marital_status` | estado civil | `body` | `String` | Não |
-
-
-**URL de Requisição**
-
-> $ curl -X PUT -H "Content-Type:application/json" -d '{"name": "String", "age": "int", "dependents": "int", "income": "float", "marital_status": "String"}' https://localhost:8080/clients/{id}
-
-#### Exemplo de requisição
-```JSON
-{
-  "name": String,
-  "age": int,
-  "dependents": int,
-  "income": float,
-  "marital_status": String
-}
-```
-
-Retorna um Array do cliente cadastrado.
-
-#### Exemplo de resposta
-
-```JSON
-{
-  "id": long,
-  "name": String,
-  "age": int,
-  "dependents": int,
-  "houses": List [
-    {
-      "id": int,
-      "ownership_status": String,
-      "location": String,
-      "zipcode": String
-    }
-  ],
-  "income": float,
-  "marital_status": String,
-  "vehicles": List [
-    {
-      "id": 1,
-      "brand": String,
-      "model": String,
-      "year": int
-    }
-  ],
-  "createdAt": Date,
-  "updatedAt": Date
-}
-```
-</details>
-<details>
-<summary style="font-size:16px;"><b>DELETE: /clients/:id</b></summary>
-
-### Função
-
-Exclui um cliente por ID.
-
-#### Requisição
-
-**Parâmetros**
-| Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
-|-----------|-----------|-------------------|--------------|------------|
-| `id` | ID do cliente | `path` | `long` | Sim |
-
-
-**URL de Requisição**
-
->  $ curl -X DELETE https://localhost:8080/clients/{id}
-
-
-#### Exemplo de requisição
-```JSON
-{
-  
-}
-```
-
-Retorna um Array do cliente, suas casas e veículos deletados.
-> `lembrando que ao deletar um cliente as suas casas e veículos também deverão ser deletados`.
-
-#### Exemplo de resposta
-
-```JSON
-{
-  "id": long,
-  "name": String,
-  "age": int,
-  "dependents": int,
-  "houses": List [
-    {
-      "id": int,
-      "ownership_status": String,
-      "location": String,
-      "zipcode": String
-    }
-  ],
-  "income": float,
-  "marital_status": String,
-  "vehicles": List [
-    {
-      "id": 1,
-      "brand": String,
-      "model": String,
-      "year": int
-    }
-  ],
-  "createdAt": Date,
-  "updatedAt": Date
-}
-```
-</details>
-
-
-
-
-
 -------------------------------------------------------------
-<!-- Requisitos da casa -->
+<!-- Requisitos das Atividades -->
 
-
-
-
-
-
-### Requisitos da casa
+### Requisitos das Atividades
 
 <details>
-<summary style="font-size:16px"><b>GET: /houses</b></summary>
+<summary style="font-size:16px;"><b>GET: /tasks</b></summary>
 
 ### Função
 
-Listar todas as casas, Filtrar casas por zipcode.
+Deve haver uma rota para listar todas as atividades cadastradas.
 
 #### Requisição
 
-**Parâmetros**
-| Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
-|-----------|-----------|-------------------|--------------|------------|
-| `zipcode` | cep da casa | `query` | `String` | Não |
-
 **URL de Requisição**
 
-> $ curl https://localhost:8080/houses[?zipcode=[cep]
+> $ curl https://localhost:8080/tasks
 
 #### Exemplo de requisição
+
 ```JSON
 {
 
 }
 ```
 
-Retorna um Array das casas.
+Retorna um array das atividades.
 
 #### Exemplo de resposta
 
 ```JSON
 [
   {
-    "id": int,
-    "ownership_status": String,
-    "location": String,
-    "zipcode": String
+    "id": long,
+    "todolistId": long,
+    "name": String,
+    "description": String,
+    "dueDate": Date,
+    "completed": Boolean,
+    "createdAt": Date,
+    "updatedAt": Date
   },
   {...},
   {...}
@@ -444,585 +367,479 @@ Retorna um Array das casas.
 </details>
 
 <details>
-<summary style="font-size:16px"><b>POST: /houses</b></summary>
+<summary style="font-size:16px;"><b>POST: /tasks</b></summary>
 
 ### Função
 
-Cria uma nova casa e adiciona ao cliente.
+Deve haver uma rota para cadastrar uma atividade no sistema.
 
 #### Requisição
 
 **Parâmetros**
 | Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
 |-----------|-----------|-------------------|--------------|------------|
-| `ownership_status` | status da casa | `body` | `String` | Sim |
-| `location` | Endereço completo | `body` | `String` | Sim |
-| `zipcode` | CEP | `body` | `String` | Sim |
-| `client_id` | id do cliente | `body` | `long` | Sim |
-
+| `todolistId` | ID da lista de tarefas | `body` | `long` | Sim |
+| `name` | Nome | `body` | `String` | Sim |
+| `description` | Descrição | `body` | `String` | Sim |
+| `dueDate` | Data de Vencimento | `body` | `Date` | Sim |
+| `completed` | Completa | `body` | `Boolean` | Sim |
 
 **URL de Requisição**
 
-> $ curl -i -H "Content-Type:application/json" -d '{"ownership_status": "String", "location": "String", "zipcode": "String", "client_id": "long"}' https://localhost:8080/houses
+> $ curl -i -H "Content-Type:application/json" -d '{"todolistId": "Long", "name": "String", "description": "String", "dueDate": "Date", "completed": "Boolean"}' https://localhost:8080/tasks
 
 #### Exemplo de requisição
 
-Envia um objeto do tipo `casa` com o formato abaixo.
-
 ```JSON
 {
-  "ownership_status": String,
-  "location": String,
-  "zipcode": String,
-  "client_id": long,
+  "todolistId": long,
+  "name": String,
+  "description": String,
+  "dueDate": Date,
+  "completed": Boolean
 }
 ```
 
-Retorna um objeto do tipo casa cliente cadastrado.
+Retorna a atividade cadastrada.
 
 #### Exemplo de resposta
 
 ```JSON
 {
   "id": long,
-  "ownership_status": String,
-  "location": String,
-  "zipcode": String
+  "todolistId": long,
+  "name": String,
+  "description": String,
+  "dueDate": Date,
+  "completed": Boolean,
+  "createdAt": Date,
+  "updatedAt": Date
 }
 ```
 </details>
 
 <details>
-<summary style="font-size:16px;"><b>PUT: /houses/:id</b></summary>
+<summary style="font-size:16px;"><b>GET: /tasks/:id</b></summary>
 
 ### Função
 
-Atualizar uma casa por ID.
+Buscar atividade por ID.
 
 #### Requisição
 
 **Parâmetros**
 | Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
 |-----------|-----------|-------------------|--------------|------------|
-| `id` | ID da casa | `path` | `long` | Sim |
-| `ownership_status` | status da casa | `body` | `String` | Não |
-| `client_id` | id do cliente | `body` | `long` | Não |
-
+| `id` | ID da atividade | `path` | `long` | Sim |
 
 **URL de Requisição**
 
-> $ curl -X PUT -H "Content-Type:application/json" -d '{"ownership_status": "String", "client_id": "long"}' https://localhost:8080/houses/{id}
+> $ curl https://localhost:8080/tasks/{id}
 
 #### Exemplo de requisição
+
 ```JSON
 {
-  "ownership_status": String,
-  "client_id": long
+
 }
 ```
 
-Retorna um objeto do tipo casa alterado.
+Retorna a atividade cadastrada.
 
 #### Exemplo de resposta
 
 ```JSON
 {
   "id": long,
-  "ownership_status": String,
-  "location": String,
-  "zipcode": String,
+  "todolistId": long,
+  "name": String,
+  "description": String,
+  "dueDate": Date,
+  "completed": Boolean,
+  "createdAt": Date,
+  "updatedAt": Date
 }
 ```
 </details>
+
 <details>
-<summary style="font-size:16px;"><b>DELETE: /houses/:id</b></summary>
+<summary style="font-size:16px;"><b>PUT: /tasks/:id</b></summary>
 
 ### Função
 
-Exclui uma casa por ID.
+Atualizar atividade por ID.
 
 #### Requisição
 
 **Parâmetros**
 | Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
 |-----------|-----------|-------------------|--------------|------------|
-| `id` | ID do cliente | `path` | `long` | Sim |
-
+| `id` | ID da atividade | `path` | `long` | Sim |
+| `name` | Nome | `body` | `String` | Sim |
+| `description` | Descrição | `body` | `String` | Sim |
+| `dueDate` | Data de Vencimento | `body` | `Date` | Sim |
+| `completed` | Completa | `body` | `Boolean` | Sim |
 
 **URL de Requisição**
 
->  $ curl -X DELETE https://localhost:8080/houses/{id}
-
+> $ curl -i -H "Content-Type:application/json" -d '{"name": "String", "description": "String", "dueDate": "Date", "completed": "Boolean"}' -X PUT https://localhost:8080/tasks/{id}
 
 #### Exemplo de requisição
+
 ```JSON
 {
-  
+  "name": String,
+  "description": String,
+  "dueDate": Date,
+  "completed": Boolean
 }
 ```
 
-Retorna um Array do cliente, suas casas e veículos deletados.
-> `lembrando que ao deletar um cliente as suas casas e veículos também deverão ser deletados`.
+Retorna a atividade atualizada.
 
 #### Exemplo de resposta
 
 ```JSON
 {
   "id": long,
-  "ownership_status": String,
-  "location": String,
-  "zipcode": String,
+  "todolistId": long,
+  "name": String,
+  "description": String,
+  "dueDate": Date,
+  "completed": Boolean,
+  "createdAt": Date,
+  "updatedAt": Date
 }
 ```
 </details>
 
+<details>
+<summary style="font-size:16px;"><b>DELETE: /tasks/:id</b></summary>
 
+### Função
 
+Excluir atividade por ID.
 
+#### Requisição
+
+**Parâmetros**
+| Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
+|-----------|-----------|-------------------|--------------|------------|
+| `id` | ID da atividade | `path` | `long` | Sim |
+
+**URL de Requisição**
+
+> $ curl -X DELETE https://localhost:8080/tasks/{id}
+
+#### Exemplo de requisição
+
+```JSON
+{
+
+}
+```
+
+Retorna um array de atividades cadastradas após a exclusão de uma atividade por id.
+
+#### Exemplo de resposta
+
+```JSON
+[
+  {
+    "id": long,
+    "todolistId": long,
+    "name": String,
+    "description": String,
+    "dueDate": Date,
+    "completed": Boolean,
+    "createdAt": Date,
+    "updatedAt": Date
+  },
+  {...},
+  {...}
+]
+```
+</details>
 
 -------------------------------------------------------------
-<!-- Requisitos do veículo -->
+<!-- Outras Funcionalidades -->
 
+## Bônus
 
-
-
-
-
-
-
-### Requisitos do veículo
+### Outras Funcionalidades
 
 <details>
-<summary style="font-size:16px"><b>POST: /vehicles</b></summary>
+<summary style="font-size:16px;"><b>Rota: /tasks/:id/complete</b></summary>
 
 ### Função
 
-Cria um novo veiculo.
+Completar tarefa por ID.
 
 #### Requisição
 
 **Parâmetros**
 | Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
 |-----------|-----------|-------------------|--------------|------------|
-| `brand` | status da casa | `body` | `String` | Sim |
-| `model` | Endereço completo | `body` | `String` | Sim |
-| `year` | CEP | `body` | `String` | Sim |
-
+| `id` | ID da atividade | `path` | `long` | Sim |
 
 **URL de Requisição**
 
-> $ curl -i -H "Content-Type:application/json" -d '{"brand": "String", "model": "String", "year": "int"}' https://localhost:8080/vehicles
+> $ curl -i -H "Content-Type:application/json" -X PUT https://localhost:8080/tasks/{id}/complete
 
 #### Exemplo de requisição
 
-Envia um objeto do tipo `casa` com o formato abaixo.
-
 ```JSON
 {
-  "brand": String,
-  "model": String,
-  "year": int
+
 }
 ```
 
-Retorna um objeto do tipo veículo cadastrado.
+Retorna a atividade atualizada.
 
 #### Exemplo de resposta
 
 ```JSON
 {
   "id": long,
-  "brand": String,
-  "model": String,
-  "year": int
+  "todolistId": long,
+  "name": String,
+  "description": String,
+  "dueDate": Date,
+  "completed": Boolean,
+  "createdAt": Date,
+  "updatedAt": Date
 }
 ```
 </details>
 
 <details>
-<summary style="font-size:16px;"><b>PUT: /vehicles/:id/clients</b></summary>
+<summary style="font-size:16px;"><b>Rota: /tasks/:id/incomplete</b></summary>
 
 ### Função
 
-Cria uma associação entre cliente e veículo.
+Reabrir atividade por ID.
 
 #### Requisição
 
 **Parâmetros**
 | Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
-|-----------|-----------|-------------------|--------------|------------|
-| `id` | ID da casa | `path` | `long` | Sim |
-| `client_id` | id do cliente | `body` | `long` | Não |
+|-----------|
 
+-----------|-------------------|--------------|------------|
+| `id` | ID da atividade | `path` | `long` | Sim |
 
 **URL de Requisição**
 
-> $ curl -i -X PUT -d '{"client_id": "long"}' https://localhost:8080/vehicles/{id}/clients
+> $ curl -i -H "Content-Type:application/json" -X PUT https://localhost:8080/tasks/{id}/incomplete
 
 #### Exemplo de requisição
+
 ```JSON
 {
-  "client_id": long
+
 }
 ```
 
-Retorna um objeto do tipo veículo alterado que foi associado a um cliente.
+Retorna a atividade atualizada.
 
 #### Exemplo de resposta
 
 ```JSON
 {
   "id": long,
-  "brand": String,
-  "model": String,
-  "year": int
+  "todolistId": long,
+  "name": String,
+  "description": String,
+  "dueDate": Date,
+  "completed": Boolean,
+  "createdAt": Date,
+  "updatedAt": Date
 }
 ```
 </details>
 
 <details>
-<summary style="font-size:16px;"><b>DELETE: /vehicles/:id</b></summary>
+<summary style="font-size:16px;"><b>GET: /tasks/overdue</b></summary>
 
 ### Função
 
-Remover uma associação entre veiculo e cliente e exclui o veiculo por ID.
-> `caso este veículo não tenha associação com nenhum cliente, deverá ser apenas excluido.`
+Deve haver uma rota para listar todas as atividades em atraso.
 
 #### Requisição
 
-**Parâmetros**
-| Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
-|-----------|-----------|-------------------|--------------|------------|
-| `id` | ID do cliente | `path` | `long` | Sim |
-
-
 **URL de Requisição**
 
->  $ curl -X DELETE https://localhost:8080/vehicles/{id}
-
+> $ curl https://localhost:8080/tasks/overdue
 
 #### Exemplo de requisição
+
 ```JSON
 {
-  
+
 }
 ```
 
-Retorna um objeto do tipo veículo que foi deletado.
-> `lembrando que ao deletar um veículo o cliente não será afetado`.
+Retorna um array das atividades em atraso.
 
 #### Exemplo de resposta
 
 ```JSON
-{
-  "id": long,
-  "brand": String,
-  "model": String,
-  "year": int
-}
+[
+  {
+    "id": long,
+    "todolistId": long,
+    "name": String,
+    "description": String,
+    "dueDate": Date,
+    "completed": Boolean,
+    "createdAt": Date,
+    "updatedAt": Date
+  },
+  {...},
+  {...}
+]
 ```
 </details>
-
-
-
-
--------------------------------------------------------------
-<!-- Requisitos do Seguro -->
-
-
-
-
-
-
-
-
-### Requisitos do Seguro
 
 <details>
-<summary style="font-size:16px"><b>POST: /insurances/life</b></summary>
+<summary style="font-size:16px;"><b>GET: /tasks/completed</b></summary>
 
 ### Função
 
-Realiza a analise de risco para a linha de seguro vida.
+Deve haver uma rota para listar todas as atividades completadas.
 
 #### Requisição
 
-**Parâmetros**
-| Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
-|-----------|-----------|-------------------|--------------|------------|
-| `risk_questions` | Questões de risco. | `body` | `[boolean,boolean,boolean]` | Sim |
-| `client_id` | ID do cliente | `body` | `long` | Sim |
-
-
 **URL de Requisição**
 
-> $ curl -i -H "Content-Type:application/json" -d '{"risk_questions": "[bool,bool,bool]", "client_id": "long"}' https://localhost:8080/insurances/life
+> $ curl https://localhost:8080/tasks/completed
 
 #### Exemplo de requisição
 
-Envia um objeto do tipo `seguro` com o formato abaixo.
-
 ```JSON
 {
-  "risk_questions": List [boolean, boolean, boolean],
-  "client_id": long
+
 }
 ```
 
-Retorna um objeto do tipo seguro cadastrado, após realizar a analise de risco para a linha de seguro vida.
+Retorna um array das atividades completadas.
 
 #### Exemplo de resposta
 
 ```JSON
-{
- "id": long,
- "type": String,
- "risk": int,
- "analysis": Srting,
- "observation": String,
- "createdAt": Date,
- "validateAt": Date
-}
+[
+  {
+    "id": long,
+    "todolistId": long,
+    "name": String,
+    "description": String,
+    "dueDate": Date,
+    "completed": Boolean,
+    "createdAt": Date,
+    "updatedAt": Date
+  },
+  {...},
+  {...}
+]
 ```
 </details>
-
 
 <details>
-<summary style="font-size:16px"><b>POST: /insurances/disability</b></summary>
+<summary style="font-size:16px;"><b>GET: /tasks/today</b></summary>
 
 ### Função
 
-Realiza a analise de risco para a linha de seguro invalidez.
+Deve haver uma rota para listar todas as atividades do dia.
 
 #### Requisição
 
-**Parâmetros**
-| Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
-|-----------|-----------|-------------------|--------------|------------|
-| `risk_questions` | Questões de risco. | `body` | `[boolean,boolean,boolean]` | Sim |
-| `client_id` | ID do cliente | `body` | `long` | Sim |
-
-
 **URL de Requisição**
 
-> $ curl -i -H "Content-Type:application/json" -d '{"risk_questions": "[bool,bool,bool]", "client_id": "long"}' https://localhost:8080/insurances/disability
+> $ curl https://localhost:8080/tasks/today
 
 #### Exemplo de requisição
 
-Envia um objeto do tipo `seguro` com o formato abaixo.
-
 ```JSON
 {
-  "risk_questions": List [boolean, boolean, boolean],
-  "client_id": long
+
 }
 ```
 
-Retorna um objeto do tipo seguro cadastrado, após realizar a analise de risco para a linha de seguro invalidez.
+Retorna um array das atividades do dia.
 
 #### Exemplo de resposta
 
 ```JSON
-{
- "id": long,
- "type": String,
- "risk": int,
- "analysis": Srting,
- "observation": String,
- "createdAt": Date,
- "validateAt": Date
-}
+[
+  {
+    "id": long,
+    "todolistId": long,
+    "name": String,
+    "description": String,
+    "dueDate": Date,
+    "completed": Boolean,
+    "createdAt": Date,
+    "updatedAt": Date
+  },
+  {...},
+  {...}
+]
 ```
 </details>
-
-
-
-<details>
-<summary style="font-size:16px"><b>POST: /insurances/home</b></summary>
-
-### Função
-
-Realiza a analise de risco para a linha de seguro residencial.
-
-#### Requisição
-
-**Parâmetros**
-| Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
-|-----------|-----------|-------------------|--------------|------------|
-| `risk_questions` | Questões de risco. | `body` | `[boolean,boolean,boolean]` | Sim |
-| `client_id` | ID do cliente | `body` | `long` | Sim |
-| `house_id` | ID da casa | `body` | `long` | Sim |
-
-
-**URL de Requisição**
-
-> $ curl -i -H "Content-Type:application/json" -d '{"risk_questions": "[bool,bool,bool]", "client_id": "long"}' https://localhost:8080/insurances/home
-
-#### Exemplo de requisição
-
-Envia um objeto do tipo `seguro` com o formato abaixo.
-
-```JSON
-{
-  "risk_questions": List [boolean, boolean, boolean],
-  "client_id": long,
-  "house_id": long
-}
-```
-
-Retorna um objeto do tipo seguro cadastrado, após realizar a analise de risco para a linha de seguro residencial.
-
-#### Exemplo de resposta
-
-```JSON
-{
- "id": long,
- "type": String,
- "risk": int,
- "analysis": Srting,
- "observation": String,
- "createdAt": Date,
- "validateAt": Date
-}
-```
-</details>
-
-
-
-<details>
-<summary style="font-size:16px"><b>POST: /insurances/auto</b></summary>
-
-### Função
-
-Realiza a analise de risco para a linha de seguro automóvel.
-
-#### Requisição
-
-**Parâmetros**
-| Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
-|-----------|-----------|-------------------|--------------|------------|
-| `risk_questions` | Questões de risco. | `body` | `[boolean,boolean,boolean]` | Sim |
-| `client_id` | ID do cliente | `body` | `long` | Sim |
-| `vehicle_id` | ID do veículo | `body` | `long` | Sim |
-
-
-**URL de Requisição**
-
-> $ curl -i -H "Content-Type:application/json" -d '{"risk_questions": "[bool,bool,bool]", "client_id": "long"}' https://localhost:8080/insurances/auto
-
-#### Exemplo de requisição
-
-Envia um objeto do tipo `seguro` com o formato abaixo.
-
-```JSON
-{
-  "risk_questions": List [boolean, boolean, boolean],
-  "client_id": long,
-  "vehicle_id": long
-}
-```
-
-Retorna um objeto do tipo seguro cadastrado, após realizar a analise de risco para a linha de seguro automóvel.
-
-#### Exemplo de resposta
-
-```JSON
-{
- "id": long,
- "type": String,
- "risk": int,
- "analysis": Srting,
- "observation": String,
- "createdAt": Date,
- "validateAt": Date
-}
-```
-</details>
-
-
--------------------------------------------------------------
-
-
-
-
-
 
 
 ## Especificações
 
-<details>
-<summary style="font-size:16px"><b>Atributos do Cliente</b></summary>
-Todos os atributos simples do Cliente são obrigatórios:
+### Estrutura das Entidades
 
-- **`name`**: Nome (um valor textual referente ao nome do cliente).
-- **`age`**: Idade (um número inteiro igual ou maior que 0).
-- **`dependents`**: O número de dependentes (um número inteiro igual ou maior que 0).
-- **`income`**: Renda (um número inteiro igual ou maior que 0).
-- **`marital_status`**: Estado civil ( "`single`" ou "`married`").
-- **`houses`**: Casas
-  - Os usuários podem ter 0 ou mais casas.
-- **`vehicles`**: Veículos
-  - Os usuários podem ter 0 ou mais veículos.
-- **`createdAt`**: Data de criação do cliente.
-- **`updatedAt`**: Data de atualização do cliente.
+<details>
+<summary style="font-size:16px;"><b>Lista de Tarefas</b></summary>
+
+- `id`: Identificador único da lista de tarefas.
+- `name`: Nome da lista de tarefas.
+- `description`: Descrição da lista de tarefas.
+- `createdAt`: Data de criação da lista de tarefas.
+- `updatedAt`: Data de atualização da lista de tarefas.
+
+#### Exemplo de Objeto
+
+```JSON
+{
+  "id": 1,
+  "name": "Lista de Compras",
+  "description": "Lista de compras para o supermercado.",
+  "createdAt": "2023-07-07T10:00:00.000Z",
+  "updatedAt": "2023-07-07T10:00:00.000Z"
+}
+```
 </details>
 
 <details>
-<summary style="font-size:16px"><b>Atributos da Casa</b></summary>
-Todos os atributos da casa são obrigatórios:
+<summary style="font-size:16px;"><b>Atividade</b></summary>
 
-  - **`ownership_status`**: Um valor textual que pode ser "`owned`" ou "`mortgaged`"
-  - **`location`**: Um valor textual que terá o endereço completo da casa.
-  - **`zipcode`**: Um valor textual que terá o CEP.
+- `id`: Identificador único da atividade.
+- `todolistId`: Identificador único da lista de tarefas associada.
+- `name`: Nome da atividade.
+- `description`: Descrição da atividade.
+- `dueDate`: Data de vencimento da atividade.
+- `completed`: Status de conclusão da atividade.
+- `createdAt`: Data de criação da atividade.
+- `updatedAt`: Data de atualização da atividade.
 
-</details>
+#### Exemplo de Objeto
 
-<details>
-<summary style="font-size:16px"><b>Atributos do Veículo</b></summary>
-Todos os atributos não chave do veículo são obrigatórios(salve exceção a PK):
-
-  - **`brand`**: Um valor textual correspondente a marca
-  - **`model`**: Um valor textual correspondente ao modelo
-  - **`year`**: Um número inteiro positivo correspondente ao ano que foi fabricado.
-</details>
-
-<details>
-<summary style="font-size:16px"><b>Atributos do Seguro</b></summary>
-Todos os atributos do Seguro são obrigatórios, exceto o campo `observation`:
-
-- **`type`**: Um valor textual que pode ser "`life`", "`disability`", "`home`" ou "`auto`".
-- **`risk`**: Um número inteiro correspondente a pontuação do risco
-- **`analysis`**: Um valor textual que pode ser "`economic`", "`regular`" ou "`responsible`".
-- **`observation`**: Um valor textual correspondente a observação do seguro
-- **`createdAt`**: Data de criação da analise.
-- **`validatedAt`**: Data de validade da analise.
-
-</details>
-
-### O algoritmo de risco
-
-O aplicativo recebe a carga JSON por meio dos endpoints da API e a transforma em um perfil de risco calculando uma pontuação de risco para cada ramo de seguro (vida, invalidez, residencial e automóvel) com base nas informações fornecidas pelo usuário.
-
-Primeiro, calcula a pontuação base somando as respostas das questões de risco, resultando em um número que varia de 0 a 3. Em seguida, aplica as seguintes regras para determinar uma pontuação de risco para cada ramo de seguro.
-
-- Caso a usuária não possua renda, veículos ou moradia, ela fica inelegível para seguro de invalidez, automóvel e residência, respectivamente.
-- Se o usuário tiver mais de 60 anos, ele não terá direito ao seguro de invalidez e de vida.
-- Se o usuário tiver menos de 30 anos, desconta 2 pontos de risco de todos os ramos de seguro. Se ela tiver entre 30 e 40 anos, descontar 1.
-- Se a renda dela for superior a US$ 200 mil, deduza 1 ponto de risco de todas as linhas de seguro.
-- Se a casa do usuário estiver hipotecada, adicione 1 ponto de risco à pontuação da casa.
-- Para cada casa do usuario que estiver hipotecada, adicione 1 ponto de risco à pontuação de incapacidade.
-- Se o usuário tiver dependentes, adicione 1 ponto de risco aos escores de incapacidade e de vida.
-- Se o usuário for casado, adicione 1 ponto de risco à pontuação de vida e remova 1 ponto de risco de incapacidade.
-- Se o veículo do usuário foi produzido nos últimos 5 anos, adicione 1 ponto de risco à pontuação desse veículo.
-
-
-Este algoritmo resulta numa pontuação final para cada ramo de seguro, que deve ser analisada utilizando os seguintes intervalos:
-
-- 0 e abaixo são mapeados para `“economic”`.
-- 1 e 2 são mapeados para `“regular”`.
-- 3 e acima mapeia para `“responsible”` .
-
-Lembrando que uma analise de segura tem validade de 30 dias, ou seja, um mês.
+```JSON
+{
+  "id": 1,
+  "todolistId": 1,
+  "name": "Comprar leite",
+  "description": "Comprar 2 litros de leite desnatado.",
+  "dueDate": "2023-07-08T10:00:00.000Z",
+  "completed": false,
+  "createdAt": "2023-07-07T10:00:00.000Z",
+  "updatedAt": "2023-07-07T10:00:00
+}
+```
 
 ## Etapas do projeto
 
@@ -1040,18 +857,10 @@ Lembrando que uma analise de segura tem validade de 30 dias, ou seja, um mês.
 
 ### 2. Segunda Etapa
 
-- Desenvolva as rotas especificadas nos [requisitos](#requisitos), começando com os [requisitos do cliente](#requisitos-do-cliente), logo depois faça os [requisitos da casa](#requisitos-da-casa) e por fim os [requisitos do veículo](#requisitos-do-veículo).
-- Crie as classes que servirão para representar os requests e responses da sua API.
-- Crie os servises de cada uma das entidades.
-- Os [requisitos do seguro](#requisitos-do-seguro), não deverão ser implementados na 2º etapa.
-
-### 3. Terceira Etapa
-
-- Desenvolva as rotas espeficicadas nos [requisitos do seguro](#requisitos-do-seguro):
-  - [POST: /insurances/life](#func3a7c3a3o-12)
-  - [POST: /insurances/disability](#func3a7c3a3o-13)
-  - [POST: /insurances/home](#func3a7c3a3o-14)
-  - [POST: /insurances/auto](#func3a7c3a3o-15)
+- Desenvolva as rotas especificadas nos [requisitos](#requisitos), começando com os [Requisitos do To-Do List](#requisitos-do-to-do-list), e logo depois faça os [Requisitos das Atividades](#requisitos-das-atividades).
+- Extra/Opcional:
+  - Crie as classes que servirão para representar os requests e responses da sua API.
+  - Crie os servises de cada uma das entidades.
 
 - Bonus:
   - Ao final do desafio serão selecionados alguns participantes para serem entrevistados, seguindo as recomendações [para o dia da entrevista técnica](#para-o-dia-da-entrevista-técnica)
