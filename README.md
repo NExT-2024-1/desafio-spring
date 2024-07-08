@@ -955,7 +955,7 @@ Você é livre para tomar as decisões técnicas com as quais você se sente mai
 
 Você pode usar outras bibliotecas que não foram apresentadas no curso, mas queremos que a solução de arquitetura seja sua, portanto não use bibliotecas que impõem uma arquitetura/código específico.
 
-**Quanto `tempo` eu tenho ?**
+**Quanto `tempo` eu tenho?**
 
 O projeto terá o limite de 4 horas, mas poderá ser realizado em bem menos, portanto, quanto mais tempo você demorar, mais críticos seremos na sua avaliação =]
 
