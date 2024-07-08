@@ -38,27 +38,15 @@ Estamos interessados ​​em ver como você aborda o desafio, portanto, crie co
 - [Fluxo de Versionamento](#fluxo-de-versionamento)
 - [Escopo do desafio](#escopo-do-desafio)
 - [Requisitos](#requisitos)
-  - [Funcionalidades da API](#funcionalidades-da-api)
-  - [Persistência dos Dados](#persistência-dos-dados)
-  - [Outras Funcionalidades](#outras-funcionalidades)
-    - [GET: /todolists](#get-todolists)
-    - [POST: /todolists](#post-todolists)
-    - [PUT: /todolists/:id](#put-todolistsid)
-    - [DELETE: /todolists/:id](#delete-todolistsid)
-    - [GET: /tasks](#get-tasks)
-    - [POST: /tasks](#post-tasks)
-    - [PUT: /tasks/:id](#put-tasksid)
-    - [DELETE: /tasks/:id](#delete-tasksid)
-    - [GET: /tasks/overdue](#get-tasksoverdue)
-    - [GET: /tasks/completed](#get-taskscompleted)
-    - [GET: /tasks/today](#get-taskstoday)
-    - [GET: /tasks/:id/subtasks](#get-tasksidsubtasks)
-    - [POST: /tasks/:id/subtasks](#post-tasksidsubtasks)
-    - [PUT: /tasks/:id/subtasks/:subtaskId](#put-tasksidsubtaskssubtaskid)
-    - [DELETE: /tasks/:id/subtasks/:subtaskId](#delete-tasksidsubtaskssubtaskid)
+  - [Requisitos do To-Do List](#requisitos-do-to-do-list)
+  - [Requisitos das Atividades](#requisitos-das-atividades)
+  - [Bônus](#bônus)
+    - [Outras Funcionalidades](#outras-funcionalidades)
+- [Especificações](#especificações)
 - [Estrutura das Entidades](#estrutura-das-entidades)
-  - [Lista de Tarefas](#lista-de-tarefas)
-  - [Atividade](#atividade)
+- [Etapas do projeto](#etapas-do-projeto)
+- [Critérios de Avaliação](#critérios-de-avaliação)
+  - [O que será avaliado](#o-que-será-avaliado)
 
 ## Desafio
 
@@ -97,7 +85,6 @@ Aconselhamos seguir o [versionamento semântico](https://semver.org/) e o [gitfl
 
 ## Requisitos
 
--------------------------------------------------------------
 <!-- Requisitos do Todo List -->
 
 ### Requisitos do To-Do List
@@ -148,7 +135,7 @@ Retorna um array das listas de tarefas.
 
 Deve haver uma rota para cadastrar uma lista de tarefas no sistema;
 
-#### Requisição
+### Requisição
 
 **Parâmetros**
 | Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
@@ -193,7 +180,7 @@ Retorna a lista de tarefas cadastrada.
 
 Buscar lista de tarefas por ID.
 
-#### Requisição
+### Requisição
 
 **Parâmetros**
 | Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
@@ -234,13 +221,11 @@ Retorna a lista de tarefas cadastrada.
 
 Atualizar lista de tarefas por ID.
 
-#### Requisição
+### Requisição
 
 **Parâmetros**
 | Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
 |-----------|-----------|-------------------|--------------|------------|
-
-
 | `id` | ID da lista de tarefas | `path` | `long` | Sim |
 | `name` | Nome | `body` | `String` | Sim |
 | `description` | Descrição | `body` | `String` | Sim |
@@ -280,7 +265,7 @@ Retorna a lista de tarefas atualizada.
 
 Excluir lista de tarefas por ID.
 
-#### Requisição
+### Requisição
 
 **Parâmetros**
 | Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
@@ -330,7 +315,7 @@ Retorna um array de listas de tarefas cadastradas após a exclusão de uma lista
 
 Deve haver uma rota para listar todas as atividades cadastradas.
 
-#### Requisição
+### Requisição
 
 **URL de Requisição**
 
@@ -373,7 +358,7 @@ Retorna um array das atividades.
 
 Deve haver uma rota para cadastrar uma atividade no sistema.
 
-#### Requisição
+### Requisição
 
 **Parâmetros**
 | Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
@@ -425,7 +410,7 @@ Retorna a atividade cadastrada.
 
 Buscar atividade por ID.
 
-#### Requisição
+### Requisição
 
 **Parâmetros**
 | Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
@@ -469,7 +454,7 @@ Retorna a atividade cadastrada.
 
 Atualizar atividade por ID.
 
-#### Requisição
+### Requisição
 
 **Parâmetros**
 | Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
@@ -520,7 +505,7 @@ Retorna a atividade atualizada.
 
 Excluir atividade por ID.
 
-#### Requisição
+### Requisição
 
 **Parâmetros**
 | Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
@@ -575,7 +560,7 @@ Retorna um array de atividades cadastradas após a exclusão de uma atividade po
 
 Completar tarefa por ID.
 
-#### Requisição
+### Requisição
 
 **Parâmetros**
 | Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
@@ -619,7 +604,7 @@ Retorna a atividade atualizada.
 
 Reabrir atividade por ID.
 
-#### Requisição
+### Requisição
 
 **Parâmetros**
 | Parâmetro | Descrição | Tipo de Parâmetro | Tipo de dado | Obrigatório |
@@ -665,7 +650,7 @@ Retorna a atividade atualizada.
 
 Deve haver uma rota para listar todas as atividades em atraso.
 
-#### Requisição
+### Requisição
 
 **URL de Requisição**
 
@@ -708,7 +693,7 @@ Retorna um array das atividades em atraso.
 
 Deve haver uma rota para listar todas as atividades completadas.
 
-#### Requisição
+### Requisição
 
 **URL de Requisição**
 
@@ -751,7 +736,7 @@ Retorna um array das atividades completadas.
 
 Deve haver uma rota para listar todas as atividades do dia.
 
-#### Requisição
+### Requisição
 
 **URL de Requisição**
 
