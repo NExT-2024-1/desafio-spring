@@ -957,7 +957,7 @@ Você pode usar outras bibliotecas que não foram apresentadas no curso, mas que
 
 **Quanto `tempo` eu tenho ?**
 
-O projeto terá o limite de 4 dias, mas poderá ser realizado em bem menos, portanto, quanto mais tempo você demorar, mais críticos seremos na sua avaliação =]
+O projeto terá o limite de 4 horas, mas poderá ser realizado em bem menos, portanto, quanto mais tempo você demorar, mais críticos seremos na sua avaliação =]
 
 **Qual `banco de Dados` devo usar?**
 
