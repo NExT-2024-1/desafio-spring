@@ -840,6 +840,7 @@ Retorna um array das atividades do dia.
   "updatedAt": "2023-07-07T10:00:00
 }
 ```
+</details>
 
 ## Etapas do projeto
 
