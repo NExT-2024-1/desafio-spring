@@ -971,7 +971,7 @@ O uso do `Rest Repositories` é permitido apenas para criar um CRUD. No entanto,
 
 Essa é uma aplicação totalmente escalável, isso significa que além das específicações, após finalizado o desafio, é totalmente possível implementar mais funcionalidades a essa aplicação, e essa será uma ótima maneira para fixar os conhecimentos.
 
-Você pode implementar desde funcionalidades simples que não foram específicadas no desafio, como a inclusão de uma nova modalidade de seguro desemprego, ou uma rota que irá retornar os dados de casas onde todos que moram nela tem seguro.
+Você pode implementar desde funcionalidades simples que não foram específicadas no desafio, como a inclusão de uma nova funcionalidade de sub tarefas, ou uma rota que irá retornar um relatorio dos dados de media de tempo das atividades concluidas.
 
 Faça um post no Linkedin ou Instagram e postar o código do Github é uma boa forma de demonstrar seus conhecimentos e esforços para evoluir na sua carreira para oportunidades futuras.
 
