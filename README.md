@@ -1,4 +1,4 @@
-# Tech Challenge - Teste de recrutamento do NExT 2024.1
+# Tech Challenge - Teste de recrutamento do NExT Seguros 2024.1
 
 <!-- PROJECT SHIELDS -->
 
@@ -19,7 +19,7 @@
 
 ## Overview
 
-Bem-vindo ao teste de recrutamento do NExT 2024.1. Aqui no NExT nós realmente valorizamos código de qualidade, e este teste foi projetado para permitir que você nos mostre como você acha que código de qualidade deve ser escrito.
+Bem-vindo ao teste de recrutamento do NExT Seguros 2024.1. Aqui no NExT Seguros nós realmente valorizamos código de qualidade, e este teste foi projetado para permitir que você nos mostre como você acha que código de qualidade deve ser escrito.
 
 Para permitir que você se concentre no design e na implementação do código, adicionamos todos os casos de uso que esperamos que você implemente no final das instruções. Em troca, pedimos que você certifique-se de que sua implementação siga todas as melhores práticas que você conhece e que, no final, o código que você enviar seja um código do qual você se orgulhe.
 
