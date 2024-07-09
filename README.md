@@ -433,7 +433,12 @@ Deve haver uma rota para cadastrar uma atividade no sistema.
   "name": String,
   "description": String,
   "dueDate": Date,
-  "completed": Boolean
+  "completed": Boolean,
+  "todoList": {
+    "id": int
+  }
+}
+
 }
 ```
 
