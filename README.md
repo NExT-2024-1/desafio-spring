@@ -120,7 +120,20 @@ Retorna um array das listas de tarefas.
     "name": String,
     "description": String,
     "createdAt": Date,
-    "updatedAt": Date
+    "updatedAt": Date,
+    "tasks": List [
+			{
+				"id": long,
+        "name": String,
+        "description": String,
+        "dueDate": Date,
+        "completed": Boolean,
+        "createdAt": Date,
+        "updatedAt": Date
+			},
+      {...},
+      {...}
+    ]
   },
   {...},
   {...}
@@ -168,7 +181,8 @@ Retorna a lista de tarefas cadastrada.
   "name": String,
   "description": String,
   "createdAt": Date,
-  "updatedAt": Date
+  "updatedAt": Date,
+  "tasks": List []
 }
 ```
 </details>
@@ -209,7 +223,20 @@ Retorna a lista de tarefas cadastrada.
   "name": String,
   "description": String,
   "createdAt": Date,
-  "updatedAt": Date
+  "updatedAt": Date,
+  "tasks": List [
+			{
+				"id": long,
+        "name": String,
+        "description": String,
+        "dueDate": Date,
+        "completed": Boolean,
+        "createdAt": Date,
+        "updatedAt": Date
+			},
+      {...},
+      {...}
+    ]
 }
 ```
 </details>
@@ -253,7 +280,20 @@ Retorna a lista de tarefas atualizada.
   "name": String,
   "description": String,
   "createdAt": Date,
-  "updatedAt": Date
+  "updatedAt": Date,
+  "tasks": List [
+			{
+				"id": long,
+        "name": String,
+        "description": String,
+        "dueDate": Date,
+        "completed": Boolean,
+        "createdAt": Date,
+        "updatedAt": Date
+			},
+      {...},
+      {...}
+    ]
 }
 ```
 </details>
@@ -295,7 +335,20 @@ Retorna um array de listas de tarefas cadastradas após a exclusão de uma lista
     "name": String,
     "description": String,
     "createdAt": Date,
-    "updatedAt": Date
+    "updatedAt": Date,
+    "tasks": List [
+			{
+				"id": long,
+        "name": String,
+        "description": String,
+        "dueDate": Date,
+        "completed": Boolean,
+        "createdAt": Date,
+        "updatedAt": Date
+			},
+      {...},
+      {...}
+    ]
   },
   {...},
   {...}
@@ -337,7 +390,6 @@ Retorna um array das atividades.
 [
   {
     "id": long,
-    "todolistId": long,
     "name": String,
     "description": String,
     "dueDate": Date,
@@ -532,7 +584,6 @@ Retorna um array de atividades cadastradas após a exclusão de uma atividade po
 [
   {
     "id": long,
-    "todolistId": long,
     "name": String,
     "description": String,
     "dueDate": Date,
@@ -672,7 +723,6 @@ Retorna um array das atividades em atraso.
 [
   {
     "id": long,
-    "todolistId": long,
     "name": String,
     "description": String,
     "dueDate": Date,
@@ -715,7 +765,6 @@ Retorna um array das atividades completadas.
 [
   {
     "id": long,
-    "todolistId": long,
     "name": String,
     "description": String,
     "dueDate": Date,
@@ -758,7 +807,6 @@ Retorna um array das atividades do dia.
 [
   {
     "id": long,
-    "todolistId": long,
     "name": String,
     "description": String,
     "dueDate": Date,
